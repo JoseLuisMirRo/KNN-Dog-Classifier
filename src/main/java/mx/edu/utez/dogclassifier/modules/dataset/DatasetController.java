@@ -30,7 +30,7 @@ public class DatasetController {
         }
     }
 
-    @GetMapping
+    @GetMapping()
     public ResponseEntity<?> getDataset(){
         List<Dog> dataset = datasetService.getDataset();
         if(dataset.isEmpty()) {

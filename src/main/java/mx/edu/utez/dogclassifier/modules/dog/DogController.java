@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.Arrays;
+
 @RestController
 @RequestMapping("/api/dogs")
 public class DogController {
@@ -22,7 +24,8 @@ public class DogController {
     public ResponseEntity<?> classifyDog(@RequestBody DogDTO dog){
         try{
             double[] features = dog.getFeatures();
-            String predictedBreed = dogService.classifyDog(features, 10); //K vecinos más cercanos = 3
+            System.out.println("ATRIBUTOS: "+ Arrays.toString(features));
+            String predictedBreed = dogService.classifyDog(features, 6); //K vecinos más cercanos = 3
             return customResponseEntity.getOkResponse("Raza clasificada correctamente", predictedBreed);
         } catch (Exception e){
             return customResponseEntity.get400Response();
