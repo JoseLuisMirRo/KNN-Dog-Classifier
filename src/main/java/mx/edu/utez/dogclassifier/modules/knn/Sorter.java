@@ -8,7 +8,7 @@ public class Sorter {
      * @param neighbors Lista de vecinos
      */
 
-    public static void bubbleSort(List<Neighbor> neighbors) {
+    public static void bubbleSort(ArrayList<Neighbor> neighbors) {
         int n = neighbors.size();
         for (int i = 0; i < n - 1; i++) {
             for (int j = 0; j < n - i - 1; j++) {

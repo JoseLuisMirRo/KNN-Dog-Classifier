@@ -3,7 +3,6 @@ package mx.edu.utez.dogclassifier.modules.knn;
 import mx.edu.utez.dogclassifier.modules.dog.Dog;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -21,8 +20,7 @@ public class KNNService {
 
     public Dog predict(List<Dog> dataset, double[] newFeatures, int k) {
         //Lista para almacenar las distncias y sus respectivas razas
-        List<Neighbor> neighbors = new ArrayList<>();
-
+        ArrayList<Neighbor> neighbors = new ArrayList<>();
         //Calcular la distancia euclidiana entre el nuevo perro y los perros del dataset
         for (Dog dog : dataset ) {
             double distance = calculateDistance(dog, newFeatures);
@@ -32,7 +30,7 @@ public class KNNService {
         Sorter.bubbleSort(neighbors); //Ordenar la lista de vecinos por distancia
 
         //Seleccionar las k razas más cercanas
-        List<String> topKBreeds = new ArrayList<>();
+        ArrayList<String> topKBreeds = new ArrayList<>();
         for (int i = 0; i < k; i++) {
             topKBreeds.add(neighbors.get(i).getDog().getBreed());
         }
@@ -50,7 +48,7 @@ public class KNNService {
         return Math.sqrt(sum);
     }
 
-    private Dog findMostFrequentBreed(List<String> breeds, List<Neighbor> neighbors, int k) {
+    private Dog findMostFrequentBreed(ArrayList<String> breeds, ArrayList<Neighbor> neighbors, int k) {
         int maxCount = 0;
         String mostFrequentBreed = null;
 
