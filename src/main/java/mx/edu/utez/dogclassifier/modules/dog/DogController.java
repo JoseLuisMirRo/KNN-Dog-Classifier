@@ -25,7 +25,7 @@ public class DogController {
         try{
             double[] features = dog.getFeatures();
             System.out.println("ATRIBUTOS: "+ Arrays.toString(features));
-            String predictedBreed = dogService.classifyDog(features, 6); //K vecinos más cercanos = 3
+            Dog predictedBreed = dogService.classifyDog(features, 6); //K vecinos más cercanos = 3
             return customResponseEntity.getOkResponse("Raza clasificada correctamente", predictedBreed);
         } catch (Exception e){
             return customResponseEntity.get400Response();

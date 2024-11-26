@@ -21,7 +21,7 @@ public class DogService {
      * @param k Número de vecinos más cercanos a considerar
      * @return La raza predicha
      */
-    public String classifyDog(double[] features, int k) {
+    public Dog classifyDog(double[] features, int k) {
         List<Dog> dataset = datasetService.getDataset();
 
         if(dataset.isEmpty()){

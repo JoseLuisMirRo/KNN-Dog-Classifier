@@ -19,7 +19,7 @@ public class KNNService {
      * @return La raza predicha
      */
 
-    public String predict(List<Dog> dataset, double[] newFeatures, int k) {
+    public Dog predict(List<Dog> dataset, double[] newFeatures, int k) {
         //Lista para almacenar las distncias y sus respectivas razas
         List<Neighbor> neighbors = new ArrayList<>();
 
@@ -38,7 +38,7 @@ public class KNNService {
         }
         System.out.println(topKBreeds);
         //Contar cual es la raza mas frecuente en los k vecinos
-        return findMostFrequentBreed(topKBreeds);
+        return findMostFrequentBreed(topKBreeds, neighbors, k);
     }
 
     private double calculateDistance(Dog dog, double[] features) {
@@ -50,7 +50,7 @@ public class KNNService {
         return Math.sqrt(sum);
     }
 
-    private String findMostFrequentBreed(List<String> breeds) {
+    private Dog findMostFrequentBreed(List<String> breeds, List<Neighbor> neighbors, int k) {
         int maxCount = 0;
         String mostFrequentBreed = null;
 
@@ -66,6 +66,13 @@ public class KNNService {
                 mostFrequentBreed = breed;
             }
         }
-        return mostFrequentBreed;
+
+        for (Neighbor neighbor : neighbors) {
+            if (neighbor.getDog().getBreed().equals(mostFrequentBreed)) {
+                return neighbor.getDog();
+            }
+        }
+
+        return null;
     }
 }
