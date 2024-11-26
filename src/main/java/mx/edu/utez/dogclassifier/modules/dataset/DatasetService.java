@@ -1,5 +1,6 @@
-package mx.edu.utez.dogclassifier.modules.dogBreed;
+package mx.edu.utez.dogclassifier.modules.dataset;
 
+import mx.edu.utez.dogclassifier.modules.dog.Dog;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -13,7 +14,7 @@ import java.util.List;
 
 @Service
 public class DatasetService {
-    private final List<DogBreed> dataset = new ArrayList<>();
+    private final List<Dog> dataset = new ArrayList<>();
 
     public void loadDataset(MultipartFile file) throws IOException {
         dataset.clear(); //Limpiar el datase previo
@@ -21,19 +22,24 @@ public class DatasetService {
         Workbook workbook = new XSSFWorkbook(file.getInputStream());
         Sheet sheet = workbook.getSheetAt(0);
 
-        for(Row row : sheet) {
-            if(row.getRowNum() == 0) continue; //Saltar el encabezado
+        for (Row row : sheet) {
+            if (row.getRowNum() == 0) continue; //Saltar el encabezado
 
-            String name = row.getCell(0).getStringCellValue();
-            double height = row.getCell(1).getNumericCellValue();
-            double weight = row.getCell(2).getNumericCellValue();
-            int energy = (int) row.getCell(3).getNumericCellValue();
-            int friendliness = (int) row.getCell(4).getNumericCellValue();
-            int intelligence = (int) row.getCell(5).getNumericCellValue();
+            double height = row.getCell(0).getNumericCellValue();
+            double weight = row.getCell(1).getNumericCellValue();
+            double coatLength = row.getCell(2).getNumericCellValue();
+            int color = (int) row.getCell(3).getNumericCellValue();
+            int activityLevel = (int) row.getCell(4).getNumericCellValue();
+            int friendliness = (int) row.getCell(5).getNumericCellValue();
+            int intelligence = (int) row.getCell(6).getNumericCellValue();
+            String breed = row.getCell(7).getStringCellValue();
 
-            dataset.add(new DogBreed(name, height, weight, energy, friendliness, intelligence));
+            dataset.add(new Dog(height, weight, coatLength, color, activityLevel, friendliness, intelligence, breed));
         }
+        workbook.close();
+    }
 
-        public List
+    public List<Dog> getDataset() {
+        return dataset;
     }
 }

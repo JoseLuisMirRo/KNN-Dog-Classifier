@@ -1,4 +1,4 @@
-package mx.edu.utez.dogclassifier.modules.dogBreed;
+package mx.edu.utez.dogclassifier.modules.dog;
 
 public class Dog {
     private double height;
