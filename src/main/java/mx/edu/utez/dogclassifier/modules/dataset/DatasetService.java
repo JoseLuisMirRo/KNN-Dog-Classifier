@@ -1,6 +1,7 @@
 package mx.edu.utez.dogclassifier.modules.dataset;
 
 import mx.edu.utez.dogclassifier.modules.dog.Dog;
+import mx.edu.utez.dogclassifier.modules.knn.ArrayList;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -9,12 +10,9 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-
 @Service
 public class DatasetService {
-    private final List<Dog> dataset = new ArrayList<>();
+    private final ArrayList<Dog> dataset = new ArrayList<>();
 
     public void loadDataset(MultipartFile file) throws IOException {
         dataset.clear(); //Limpiar el datase previo
@@ -39,7 +37,7 @@ public class DatasetService {
         workbook.close();
     }
 
-    public List<Dog> getDataset() {
+    public ArrayList<Dog> getDataset() {
         return dataset;
     }
 }

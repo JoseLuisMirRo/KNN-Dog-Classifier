@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Integradora | Estructuras de Datos Aplicadas</title>
+    <link rel="icon" href="src/paw.png">
+    <link rel="stylesheet" href="./src/css/css.css">
+    <link href=" https://cdn.jsdelivr.net/npm/sweetalert2@11.14.5/dist/sweetalert2.min.css " rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="background-image">
+      <div class="container full-height">
+        <div class="row top-left mt-5">
+          <div class="col-4">
+            <h2>Integradora | Estructuras de Datos Aplicadas</h2>
+          </div>
+          <div class="col-4"></div>
+          <div class="col-4">
+            <h2>Aquino, Bahena, Miranda, Ruiz, Valera, Ventura</h2>
+          </div>
+        </div>
+        <div class="row align-items-center mb-5" style="margin-top: 80px;">
+          <div class="col-12 text-center mb-5">
+            <p>Sistema de Identificacion de Razas de Perros</p>
+          </div>
+        </div>
+        <div class="row mt-4"></div>
+        <div class="row mt-5 align-items-center justify-content-center align-buttons">
+          <div class="col-6 text-center">
+            <button class="btn btn-primary btn-lg" data-bs-toggle="modal" data-bs-target="#uploadModal">Subir archivo Excel</button>
+          </div>
+          <div class="col text-center">
+            <button class="btn btn-secondary btn-lg" data-bs-toggle="modal" data-bs-target="#formModal">Continuar</button>
+          </div>
+          <div class="col">
+            <img src="src/closeup.png" alt="Closeup" class="closeup">
+          </div>
+        </div>        
+      </div>
+    </div>
+    
+    <!-- Modal para subir el Excel -->
+    <div class="modal fade" id="uploadModal" tabindex="-1" aria-labelledby="uploadModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="uploadModalLabel">Cargar archivo Excel</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <input type="file" id="fileInput" class="form-control"/>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            <button type="button" class="btn btn-primary" onclick="processExcel()">Cargar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal para el formulario -->
+    <div class="modal fade" id="formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="formModalLabel">Formulario de Especificaciones</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="dogSpecsForm" class="needs-validation" novalidate>
+              <div class="mb-3">
+                <label for="height" class="form-label">Altura (cm):</label>
+                <input type="number" class="form-control" id="height" min="10" max="150" required>
+                <div class="valid-feedback">Altura válida.</div>
+                <div class="invalid-feedback">Por favor ingresa una altura válida (10-150cm).</div>
+              </div>
+              <div class="mb-3">
+                <label for="weight" class="form-label">Peso (kg):</label>
+                <input type="number" class="form-control" id="weight" min="1" max="80" step="0.1" required>
+                <div class="valid-feedback">Peso válido.</div>
+                <div class="invalid-feedback">Por favor ingresa un peso válido (1-80kg).</div>
+              </div>
+              <div class="mb-3">
+                <label for="coatLength" class="form-label">Largo de pelaje (cm):</label>
+                <input type="number" class="form-control" id="coatLength" min="1" max="10" required>
+                <div class="valid-feedback">Largo de pelaje válido.</div>
+                <div class="invalid-feedback">Por favor ingresa un largo de pelaje válido (1-10cm).</div>
+              </div>
+              <div class="mb-3">
+                <label for="color" class="form-label">Color del Perro:</label>
+                <select class="form-select" id="color" required>
+                  <option selected disabled value="">Selecciona un color</option>
+                  <option value="1">Negro</option>
+                  <option value="2">Blanco</option>
+                  <option value="3">Beige</option>
+                  <option value="4">Chocolate</option>
+                  <option value="5">Gris</option>
+                  <option value="6">Dorado</option>
+                  <option value="7">Manchado</option>
+                  <option value="8">Mixtos o raros</option>
+                </select>
+                <div class="valid-feedback">Color seleccionado correctamente.</div>
+                <div class="invalid-feedback">Por favor selecciona un color válido.</div>
+              </div>
+              <div class="mb-3">
+                <label for="activityLevel" class="form-label">Energía (1-10):</label>
+                <input type="number" class="form-control" id="activityLevel" min="1" max="10" required>
+                <div class="valid-feedback">Nivel de energía válido.</div>
+                <div class="invalid-feedback">Por favor ingresa un valor entre 1 y 10.</div>
+              </div>
+              <div class="mb-3">
+                <label for="friendliness" class="form-label">Amistoso (1-10):</label>
+                <input type="number" class="form-control" id="friendliness" min="1" max="10" required>
+                <div class="valid-feedback">Nivel de amistad válido.</div>
+                <div class="invalid-feedback">Por favor ingresa un valor entre 1 y 10.</div>
+              </div>
+              <div class="mb-3">
+                <label for="intelligence" class="form-label">Inteligencia (1-10):</label>
+                <input type="number" class="form-control" id="intelligence" min="1" max="10" required>
+                <div class="valid-feedback">Nivel de inteligencia válido.</div>
+                <div class="invalid-feedback">Por favor ingresa un valor entre 1 y 10.</div>
+              </div>
+              <div class="mb-3">
+                <button class="btn btn-primary" type="submit">Enviar</button>
+              </div>
+            </form>            
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"/></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"/></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.3/xlsx.full.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

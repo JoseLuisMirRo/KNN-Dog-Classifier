@@ -1,12 +1,12 @@
 package mx.edu.utez.dogclassifier.modules.dog;
 
 import mx.edu.utez.dogclassifier.modules.dataset.DatasetService;
+import mx.edu.utez.dogclassifier.modules.knn.ArrayList;
 import mx.edu.utez.dogclassifier.modules.knn.KNNService;
 import mx.edu.utez.dogclassifier.modules.utils.CustomResponseEntity;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
 
 @Service
 public class DogService {
@@ -22,7 +22,7 @@ public class DogService {
      * @return La raza predicha
      */
     public Dog classifyDog(double[] features, int k) {
-        List<Dog> dataset = datasetService.getDataset();
+        ArrayList<Dog> dataset = datasetService.getDataset();
 
         if(dataset.isEmpty()){
             throw new IllegalStateException("El dataset está vacío");

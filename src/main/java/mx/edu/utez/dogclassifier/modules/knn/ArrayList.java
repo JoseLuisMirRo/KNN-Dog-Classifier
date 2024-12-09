@@ -76,6 +76,19 @@ public class ArrayList<T> implements Iterable<T>{
         this.size = 0;
     }
 
+    //ToString
+    @Override
+    public String toString() {
+        if (size == 0) {
+            return "[]";
+        }
+        StringBuilder sb = new StringBuilder(size).append("[");
+        for (int i = 0; i < size - 1; i++) {
+            sb.append(array[i]).append(", ");
+        }
+        return sb.append(array[size - 1]).append("]").toString();
+    }
+
     //Metodo para buscar si un elemento esta en el ArrayList
     public boolean contains(T element){
         for(int i=0; i<size; i++){
@@ -129,6 +142,7 @@ public class ArrayList<T> implements Iterable<T>{
             }
             ArrayList.this.remove(--currentIndex); // Elimina el elemento y ajusta el índice
         }
+
     }
 }
 

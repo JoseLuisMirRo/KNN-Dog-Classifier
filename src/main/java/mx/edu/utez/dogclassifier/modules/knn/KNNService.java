@@ -3,9 +3,6 @@ package mx.edu.utez.dogclassifier.modules.knn;
 import mx.edu.utez.dogclassifier.modules.dog.Dog;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
-import java.util.List;
-
 @Service
 public class KNNService {
 
@@ -18,7 +15,7 @@ public class KNNService {
      * @return La raza predicha
      */
 
-    public Dog predict(List<Dog> dataset, double[] newFeatures, int k) {
+    public Dog predict(ArrayList<Dog> dataset, double[] newFeatures, int k) {
         //Lista para almacenar las distncias y sus respectivas razas
         ArrayList<Neighbor> neighbors = new ArrayList<>();
         //Calcular la distancia euclidiana entre el nuevo perro y los perros del dataset

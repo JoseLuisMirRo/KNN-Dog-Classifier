@@ -1,0 +1,130 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.background-image {
+    position: fixed; /* Cambiado de relative a fixed para mantener el fondo fijo */
+    background-image: url('/src/back.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    top: 0;
+    left: 0;
+}
+
+.background-image::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.836);
+    z-index: 1;
+}
+
+.background-image > * {
+    z-index: 2;
+}
+
+.background-image .closeup {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+    z-index: 3;
+    max-width: 800px;
+    pointer-events: none;
+}
+
+.swal2-container {
+    background: transparent !important;
+}
+
+body {
+    overflow: visible !important;
+}
+
+@font-face{
+    src: url(../Esmonthy.otf);
+    font-family: Esmonthy;
+}
+
+h2 {
+    font-family: Esmonthy;
+    font-weight: bold;
+}
+
+@font-face{
+    src: url(../Halo\ Dek.ttf);
+    font-family: HaloDek;
+}
+
+p {
+    font-family: HaloDek;
+    font-size: 60px;
+    color: rgb(197, 119, 46);
+}
+
+@font-face{
+    src: url(../Over\ Light.otf);
+    font-family: OverLight;
+}
+
+h1 {
+    font-family: OverLight;
+    color: rgb(0, 0, 0);
+}
+
+@font-face{
+    src: url(../Humbert-Regular.ttf);
+    font-family: Humbert;
+}
+
+h4 {
+    font-family: Humbert;
+    color: rgb(0, 0, 0);
+}
+
+.btn-lg {
+    font-family: 'HaloDek' !important;
+    font-size: xx-large !important;
+    padding: 10px 20px !important;
+}
+
+#nextButton {
+    font-family: 'HaloDek';
+    font-size: 1.2rem;
+    background-color: gray;
+}
+
+.btn-primary {
+    background-color: #da9d48 !important;
+    border-color: #da9d48 !important;
+    color: white !important;
+}
+
+.btn-primary:hover {
+    background-color: #c88e3d !important;
+    border-color: #c88e3d !important;
+}
+
+.full-height {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.align-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-top: 150px; 
+}

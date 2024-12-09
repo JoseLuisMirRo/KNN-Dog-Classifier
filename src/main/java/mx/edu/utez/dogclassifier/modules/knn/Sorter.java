@@ -1,6 +1,5 @@
 package mx.edu.utez.dogclassifier.modules.knn;
 
-import java.util.List;
 
 public class Sorter {
     /**
