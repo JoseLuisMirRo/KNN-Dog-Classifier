@@ -1,7 +1,11 @@
-# Proyecto de Clasificación de Perros
+# Proyecto de Clasificación de Perros usando el algoritmo KNN
 
 Este proyecto es una aplicación web para la clasificación de perros utilizando Java, Spring Boot y JavaScript. La aplicación permite a los usuarios cargar un dataset y mediante un algoritmo de clasificación, predecir la raza de un perro a partir de sus características.
 
+Proyecto integrador de la materia de Estructuras de Datos de la Universidad Tecnológica Emiliano Zapata del Estado de Morelos.
+Utilizando el algoritmo KNN (K-Nearest Neighbors) para la clasificación de perros y las clases generadas durante el curso: 
+- **1**: ArrayList personalizado.
+- **2**: Bubble Sort personalizado.
 ## Tecnologías Utilizadas
 
 - **Java**: Lenguaje de programación principal.
